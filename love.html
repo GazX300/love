@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Я тебя люблю 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(to top right, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 80px;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin-top: 10px;
+      animation: fadeIn 4s ease-in-out;
+    }
+
+    .heart {
+      font-size: 4em;
+      animation: pulse 1.5s infinite;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1.2em;
+      background-color: white;
+      color: #e91e63;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #ffe4ec;
+    }
+
+    .secret {
+      margin-top: 20px;
+      font-size: 1.5em;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease;
+    }
+
+    .secret.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      font-size: 0.9em;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .heart-fall {
+      position: fixed;
+      top: -10px;
+      font-size: 24px;
+      color: rgba(255, 0, 102, 0.7);
+      animation: fall linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="heart">❤️</div>
+<h1>Я тебя люблю!</h1>
+<p>Ты — моё счастье, моё вдохновение, моя любовь.</p>
+<button class="btn" onclick="showSecret()">Нажми 💌</button>
+<div id="secret" class="secret">Ты — тот, о ком я мечтал всю жизнь 💗</div>
+
+<footer>Создано с любовью 💞</footer>
+
+<script>
+  function showSecret() {
+    document.getElementById('secret').classList.add('show');
+  }
+
+  // Падающие сердечки
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.classList.add('heart-fall');
+    heart.innerText = '💖';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 300);
+</script>
+</body>
+</html>
